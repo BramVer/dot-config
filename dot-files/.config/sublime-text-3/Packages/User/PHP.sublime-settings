@@ -1,0 +1,9 @@
+{
+	"extensions":
+	[
+		"module",
+		"theme",
+		"php",
+		"inc"
+	]
+}

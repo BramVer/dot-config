@@ -1,0 +1,12 @@
+[
+	{
+		"args":
+		{
+			"characters": "\n"
+		},
+		"command": "insert"
+	},
+	{
+		"command": "jump_back"
+	}
+]

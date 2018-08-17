@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Add other post-commit hooks 
+python /home/darm/DEV/foul-mouth-slap/src/slapper.py -f

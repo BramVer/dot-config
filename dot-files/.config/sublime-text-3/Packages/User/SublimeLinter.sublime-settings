@@ -1,0 +1,11 @@
+// SublimeLinter Settings - User
+{
+  "linters": {
+    "phpcs": {
+      "disable": false,
+    },
+    "jshint": {
+      "disable": false,
+    }
+  }
+}

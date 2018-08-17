@@ -1,0 +1,638 @@
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+
+
+; ------------------
+; COLORS 
+; ------------------
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+fixed-center = true
+
+bg = #DA222222
+maia =  #259E83
+white = #e8e8e8
+red =   #ff4d4d
+grey =  #33
+clear = #00
+yellow = #f9a825
+
+
+; ------------------
+; BARS 
+; ------------------
+
+[bar/main]
+monitor = ${env:MONITOR:eDP1}
+monitor-fallback = eDP1
+width = 100%
+height = 30
+radius = 0.0
+fixed-center = true
+enable-ipc = false
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Overpass Mono:size=11:weight=Regular;1
+font-1 = FontAwesome:size=11;3
+
+modules-left = powermenu 
+; modules-left = powermenu i3 spotify
+modules-center = date
+modules-right = i3 
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+
+[bar/secondary]
+inherit = bar/main
+
+monitor = ${env:MONITOR:HDMI1}
+monitor-fallback = HDMI2
+
+
+[bar/fallbackbar]
+inherit = bar/main
+
+monitor = ${env:MONITOR:DP1}
+monitor-fallback = DP2
+
+
+[bar/bottombar]
+inherit = bar/main
+radius = 0.0
+fixed-center = true
+bottom = true
+enable-ipc = true
+
+modules-left =
+modules-center = spotifyprevious spotify spotifynext 
+modules-right = volume xkeyboard bluetooth battery battery2 
+
+; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
+tray-position = left
+tray-padding = 2
+tray-detached = true
+tray-maxsize = 16
+; tray-offset-x = -550
+tray-offset-y = 0
+tray-scale = 1.0
+
+
+; ------------------
+; MODULES 
+; ------------------
+
+[module/title]
+type = internal/xwindow
+format-background = #333
+format-foreground = #f0c674
+format-padding = 1
+label-maxlen = 30
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-overline = ${colors.secondary}
+
+label-layout =   %layout% 
+label-layout-overline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-overline = ${colors.secondary}
+
+
+[module/spotify]
+type = custom/script
+tail = true
+label = "  %output%  "
+exec = ~/.config/polybar/spotify.sh
+format-background = #333
+format-foreground = #f0c674
+click-left = "exec playerctl play-pause"
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+enable-click = true
+enable-scroll = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+strip-wsnumbers = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-9 = 10;
+
+ws-icon-default = 
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = ${colors.primary}
+label-mode-background = ${colors.background-alt}
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%:%index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%:%index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %icon%:%index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %icon%:%index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+
+
+[settings]
+throttle-output = 10
+throttle-output-for = 10
+throttle-input-for = 30
+
+
+
+[module/cal]
+; type = custom/ipc
+; interval = 1
+; hook-0 = date +' %A, %d %B %I:%M %p'
+; hook-1 = /usr/bin/gnome-calendar
+; initial = 1
+; click-left = polybar-msg -p %pid% hook cal 2
+; format-prefix-foreground = ${colors.foreground-alt}
+; format-overline = #0a6cf5
+
+[module/date]
+type = internal/date
+
+date ="  %A, %d %B %I:%M %p "
+
+format-prefix =  
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${root.background}
+ramp-volume-foreground = ${colors.foreground}
+format-volume-overline = #27d88e
+
+ramp-volume-0 =   
+ramp-volume-1 =  
+ramp-volume-2 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+label-volume = %percentage%%
+label-muted = " 0%"
+label-muted-foreground = ${colors.foreground}
+format-muted-overline = #27d88e
+
+mapping = true
+
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+time-format = %H:%M
+
+label-discharging = %time%
+
+format-charging = <animation-charging>
+format-charging-overline = #ffb52a
+
+format-discharging = <ramp-capacity>
+format-discharging-overline = ${self.format-charging-overline}
+
+format-full = 
+; format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-overline = ${self.format-charging-overline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+[module/battery2]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 98
+time-format = %H:%M
+
+format-charging = <animation-charging> 
+format-charging-overline = #ffb52a
+
+format-discharging = <ramp-capacity>
+format-discharging-overline = ${self.format-charging-overline}
+
+format-full = 
+; format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-overline = ${self.format-charging-overline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+format-padding = 2
+format-underline = ${colors.secondary}
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close = 
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = 
+menu-0-0-exec = lock
+menu-0-1 = 
+menu-0-1-exec = i3-msg exit
+menu-0-2 = 
+menu-0-2-exec = systemctl suspend
+menu-0-3 = 
+menu-0-3-exec = systemctl reboot
+menu-0-4 = 
+menu-0-4-exec = systemctl poweroff
+
+
+[module/traybarlauncher]
+; type = custom/text
+; content = 
+; click-left = polybar traybar
+
+[module/traybarcloser]
+; type = custom/text
+; content = "CLOSE"
+; click-left = pkill -n polybar
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+; vim:ft=dosini
+
+
+###################
+# UNUSED MODULES
+###################
+
+
+[module/pavolume]
+; type = custom/script
+; tail = true
+; label = " %output% "
+; exec = ~/.config/polybar/pavolume.sh --listen
+; click-left = amixer -D pulse sset Master toggle
+; click-right = exec pavucontrol &
+; scroll-down = amixer -D pulse sset Master 2%-
+; scroll-up = amixer -D pulse sset Master 2%+  
+
+[module/filesystem]
+; type = internal/fs
+; interval = 25
+
+; mount-0 = /
+
+; label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+; label-unmounted = %mountpoint% not mounted
+; label-unmounted-foreground = ${colors.foreground-alt}
+
+
+[module/temperature]
+; type = internal/temperature
+; thermal-zone = 0
+; warn-temperature = 60
+
+; format = <ramp> <label>
+; format-underline = #f50a4d
+; format-warn = <ramp> <label-warn>
+; format-warn-underline = ${self.format-underline}
+
+; label = %temperature%
+; label-warn = %temperature%
+; label-warn-foreground = ${colors.secondary}
+
+; ramp-0 = 
+; ramp-1 = 
+; ramp-2 = 
+; ramp-foreground = ${colors.foreground-alt}
+
+
+[module/otherbattery]
+; type = internal/battery
+
+; battery = BAT0
+; adapter = ADP0
+; full-at = 100
+
+; format-charging = "<animation-charging> <label-charging>"
+; format-discharging = " <ramp-capacity> <label-discharging>"
+; format-full = " <ramp-capacity> <label-full>"
+
+; label-charging-foreground = ${colors.white}
+; label-discharging-foreground = ${colors.white}
+; label-full-foreground = ${colors.white}
+
+; label-charging-font = 0
+; label-discharging-font = 0
+; label-full-font = 0
+
+; ramp-capacity-0 = 
+; ramp-capacity-0-foreground = ${colors.red}
+; ramp-capacity-1 = 
+; ramp-capacity-1-foreground = ${colors.yellow}
+; ramp-capacity-2 = 
+; ramp-capacity-2-foreground = ${colors.maia}
+; ramp-capacity-3-foreground = ${colors.maia}
+; ramp-capacity-3 = 
+; ramp-capacity-4 = 
+; ramp-capacity-4-foreground = ${colors.maia}
+
+; animation-charging-0 = %{F#17a086} 
+; animation-charging-1 = %{F#17a086} 
+; animation-charging-2 = %{F#17a086} 
+; animation-charging-3 = %{F#17a086} 
+; animation-charging-4 = %{F#17a086} 
+; animation-charging-framerate = 600
+
+[module/redshift]
+; type = custom/script
+; tail = true
+; label = "%output%   "
+; exec = ~/.config/polybar/redshift.sh
+; click-left = redshift -c ~/.config/redshift.conf &
+; click-right = redshift -x && pkill -9 redshift &
+
+[module/bluetooth]
+type = custom/script
+interval = 1
+exec = ~/.config/polybar/bluetooth.sh
+label = "  %output% "
+click-left = blueberry
+click-right = ~/.config/polybar/bluetooth.sh --toggle
+
+[module/eth]
+; type = internal/network
+; interface = wwp0s20f0u2i12
+; interval = 3.0
+
+; format-connected-underline = #55aa55
+; format-connected-prefix = " "
+; format-connected-prefix-foreground = ${colors.foreground-alt}
+; label-connected = ETH %local_ip%
+
+; format-disconnected =
+; ;format-disconnected = <label-disconnected>
+; ;format-disconnected-underline = ${self.format-connected-underline}
+; ;label-disconnected = %ifname% disconnected
+; ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+; inherit = module/xbacklight
+; type = internal/backlight
+; card = intel_backlight
+
+[module/cpu]
+; type = internal/cpu
+; interval = 2
+; format-prefix = " "
+; format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #f90000
+; label = CPU %percentage%%
+
+[module/memory]
+; type = internal/memory
+; interval = 2
+; format-prefix = " "
+; format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #4bffdc
+; label = RAM %percentage_used%%
+
+[module/wlan]
+; type = internal/network
+; interface = wlp4s0
+; interval = 3.0
+
+; format-connected = <ramp-signal> <label-connected> 
+; format-connected-underline = #9f78e1
+; label-connected =                       
+; ; label-connected =  %essid%
+
+; format-disconnected = <label-disconnected>
+; format-disconnected-underline = ${self.format-connected-underline}
+; label-disconnected = 
+; label-disconnected-foreground = ${colors.foreground-alt}
+
+; ramp-signal-0 = 
+; ramp-signal-1 = 
+; ramp-signal-2 = 
+; ramp-signal-3 = 
+; ramp-signal-4 = 
+; ramp-signal-foreground = ${colors.foreground-alt}
+
+
+[module/spotifyplaypause]
+type = custom/text
+content = " "
+content-foreground = ${colors.secondary}
+click-left = "exec playerctl play-pause"
+
+[module/spotifynext]
+type = custom/text
+content = ""
+content-foreground = ${colors.secondary}
+click-left = "exec playerctl next"
+
+[module/spotifyprevious]
+type = custom/text
+content = ""
+content-foreground = ${colors.secondary}
+click-left = "exec playerctl previous"
+
+
+[module/closepowermenubar]
+; type = custom/text
+; content = "%{F#259E83} %{F-}Cancel"
+; click-left = "pkill -n polybar"
+
+[module/powermenubarlauncher]
+; type = custom/text
+; content = " dsfsdfdsf "
+; click-left = polybar powermenubar
+
+
+[bar/powermenubar]
+; monitor = eDP-1
+; width = 28%
+; height = 32
+; radius = 0
+
+; background = #DA222222
+; foreground = ${colors.white}
+
+; border-size = 0
+; border-color =${colors.clear}
+
+; border-bottom-size = 0
+; border-bottom-color = ${colors.clear}
+
+; border-top-size = 0
+; border-top-color = ${colors.clear}
+
+; border-right-size = 0
+; ; border-right-color = ${colors.clear}
+
+; offset-x = 1370
+; offset-y = 35
+
+
+; padding = 3
+; module-margin = 2 
+; separator = %{F#33}|
+
+; font-0 = System San Francisco Display:size=10;2
+; font-1 = FontAwesome:size=14;3
+; font-2 = MaterialIcons:size=14;4
+; ;http://fontawesome.io/cheatsheet/
+; ;https://shanfan.github.io/material-icons-cheatsheet/
+
+; modules-center = lock logout suspend reboot poweroff closepowermenubar
+; override-redirect = true
+
+
+[module/lock]
+; type = custom/text
+; content = "%{F#259E83} %{F-}Lock"
+; click-left = "pkill -n polybar ; lock"
+
+
+[module/suspend]
+; type = custom/text
+; content = "%{F#259E83} %{F-}Suspend"
+; click-left = "pkill -n polybar ; lock && systemctl suspend"
+
+
+[module/logout]
+; type = custom/text
+; content = "%{F#259E83} %{F-}Logout"
+; click-left = "pkill -n polybar ; i3-msg exit"
+
+
+[module/reboot]
+; type = custom/text
+; content = "%{F#259E83} %{F-}Reboot"
+; click-left = "pkill -n polybar ; systemctl reboot"
+
+
+[module/poweroff]
+; type = custom/text
+; content = "%{F#259E83} %{F-}Poweroff"
+; click-left = "pkill -n polybar ; systemctl poweroff"
+
+
+[module/closepowermenubar]
+; type = custom/text
+; content = "%{F#259E83} %{F-}Cancel"
+; click-left = "pkill -n polybar"
+
+ 
+[module/backlight]
+; type = internal/backlight
+; card = intel_backlight
+; format = <ramp> <label>
+
+; label-foreground = ${colors.white}
+
+; ramp-0 = 🌕
+; ramp-1 = 🌔
+; ramp-2 = 🌓
+; ramp-3 = 🌒
+; ramp-4 = 🌑
+; ramp-foreground = ${colors.maia}
+
+; bar-width = 6
+; bar-indicator = 
+; bar-fill = 
+; bar-fill-font = 3
+; bar-fill-foreground = ${colors.white}
+; bar-empty = 
+; bar-empty-font = 3
+; bar-empty-foreground = ${colors.grey}

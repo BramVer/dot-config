@@ -1,0 +1,6 @@
+# Delete all documents
+curl 
+"$url/solr/$core/update?stream.body=<delete><query>*:*</query></delete>&commit=true"
+
+# Query all documents for a term
+curl "$url/solr/$core/select?q=$term"

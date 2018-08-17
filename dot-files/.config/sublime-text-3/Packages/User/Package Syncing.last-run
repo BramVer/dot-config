@@ -1,0 +1,26 @@
+{
+    "last_local_data": {
+        "Package Control.sublime-settings": {
+            "dir": "", 
+            "path": "/home/darm/.config/sublime-text-3/Packages/User/Package Control.sublime-settings", 
+            "version": 1495484192.3578324
+        }, 
+        "Preferences.sublime-settings": {
+            "dir": "", 
+            "path": "/home/darm/.config/sublime-text-3/Packages/User/Preferences.sublime-settings", 
+            "version": 1495484193.357759
+        }
+    }, 
+    "last_remote_data": {
+        "Package Control.sublime-settings": {
+            "dir": "", 
+            "path": "/home/darm/Dropbox/DEV/sublime_settings/Package Control.sublime-settings", 
+            "version": 1495484192.3578324
+        }, 
+        "Preferences.sublime-settings": {
+            "dir": "", 
+            "path": "/home/darm/Dropbox/DEV/sublime_settings/Preferences.sublime-settings", 
+            "version": 1495484193.357759
+        }
+    }
+}

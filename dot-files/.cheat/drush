@@ -1,0 +1,8 @@
+# Cache rebuild
+drush cr
+
+# Download module
+drush dl $module_name
+
+# Enable module and say yes to all prompts
+drush en -y $module_name

@@ -1,0 +1,46 @@
+{
+	"auto_find_in_selection": true,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"draw_centered": true,
+	"font_face": "Fira Code",
+	"font_size": 9,
+	"gn_overlay_scroll_bars": true,
+	"gn_sidebar_box": true,
+	"gnc_001": false,
+	"gnc_002": true,
+	"gnc_a09": true,
+	"gnc_m09": true,
+	"gnc_m10": true,
+	"gnwidg1": true,
+	"ignored_packages":
+	[
+		"Anaconda",
+		"AppleScript",
+		"MagicPython",
+		"Python Checker",
+		"SPARQL",
+		"Vintage"
+	],
+	"indent_to_bracket": true,
+	"index_exclude_patterns":
+	[
+		"*.log",
+		"*.nt",
+		"*.sql"
+	],
+	"matchBracketsAngle": true,
+	"material_theme_big_fileicons": true,
+	"material_theme_bright_scrollbars": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_disable_folder_animation": true,
+	"material_theme_panel_separator": true,
+	"material_theme_small_statusbar": true,
+	"material_theme_tabs_autowidth": true,
+	"material_theme_tabs_separator": true,
+	"material_theme_tree_headings": true,
+	"skin": "DA UI/Origin",
+	"tab_size": 2,
+	"theme": "Guna.sublime-theme",
+	"translate_tabs_to_spaces": true
+}

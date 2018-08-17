@@ -1,0 +1,22 @@
+# Add changes to global config
+git config --edit --global
+
+# Send all currently live changes to a new branch
+git stash
+git checkout -b new_branch
+git stash pop
+
+# Stash all untracked files including untracked
+git stash save -u
+
+# Create and go to branch
+git checkout -b new_branch
+
+# Switch to branch (must be clean)
+git checkout existing_branch
+
+# Delete branch
+git branch -d existing_branch
+
+# Undo latest git commit
+git reset HEAD~

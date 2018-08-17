@@ -1,0 +1,23 @@
+[
+	{
+		"args":
+		{
+			"file": "res://Packages/Default/Add Line Before.sublime-macro"
+		},
+		"command": "run_macro_file"
+	},
+	{
+		"args":
+		{
+			"file": "res://Packages/User/delete_subword_forward.sublime-macro"
+		},
+		"command": "run_macro_file"
+	},
+	{
+		"args":
+		{
+			"file": "res://Packages/User/delete_subword_forward.sublime-macro"
+		},
+		"command": "run_macro_file"
+	}
+]

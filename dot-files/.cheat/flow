@@ -1,0 +1,2 @@
+# To limit output to 20 chars
+fold -w 20

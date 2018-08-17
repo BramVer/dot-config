@@ -1,0 +1,25 @@
+{
+  // The opacity level of the default icon state.
+  "opacity": 0.75,
+
+  // The opacity level of the hovered icon state.
+  "opacity_on_hover": 0.5,
+
+  // The opacity level of the selected icon state.
+  "opacity_on_select": 1.0,
+
+  // Every theme adds its own sizes of the sidebar row padding.
+  // E.g. `Default.sublime-theme` provides [8, 3]. You can change it
+  // to better fit your icon size.
+  "row_padding": [5, 3],
+
+  // By default the package provides syntax aliases to apply such
+  // icons as `Gulpfile.js`, `webpack.config.js`, `package.json` and
+  // etc. If you don't want to use them you can apply icons for
+  // syntaxes only via setting this option to `false`.
+
+  // Set `true` to use icons provided by the package if your theme
+  // supports icon customization (icons provided by the theme will be
+  // used by default).
+  "force_mode": true,
+}
