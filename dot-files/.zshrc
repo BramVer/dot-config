@@ -156,3 +156,5 @@ antigen theme robbyrussell
 
 # Tell Antigen that you're done.
 antigen apply
+
+eval $(thefuck --alias)

@@ -6,11 +6,6 @@
 	"font_size": 9,
 	"gn_overlay_scroll_bars": true,
 	"gn_sidebar_box": true,
-	"gnc_001": false,
-	"gnc_002": true,
-	"gnc_a09": true,
-	"gnc_m09": true,
-	"gnc_m10": true,
 	"gnwidg1": true,
 	"ignored_packages":
 	[
