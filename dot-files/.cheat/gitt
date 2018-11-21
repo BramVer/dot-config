@@ -20,3 +20,9 @@ git branch -d existing_branch
 
 # Undo latest git commit
 git reset HEAD~
+
+# Undo staging file/dir
+git reset HEAD --
+
+# Reset unstaged changes in file/dir
+git checkout -- file.txt
