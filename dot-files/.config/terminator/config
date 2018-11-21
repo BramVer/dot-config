@@ -3,6 +3,7 @@
   inactive_color_offset = 0.899824253076
   suppress_multiple_term_dialog = True
 [keybindings]
+  broadcast_group = <Primary><Alt>g
   edit_window_title = <Shift><Alt>t
   group_tab_toggle = <Shift><Super>t
   help = Scroll_Lock
@@ -20,10 +21,10 @@
   [[default]]
     background_color = "#002b36"
     background_darkness = 1.0
-    cursor_color = "#fff"
+    cursor_color = "#eee"
     font = Monospace 10
     foreground_color = "#5d797c"
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#ffffff:#6c71c4:#93a1a1:#fdf6e3"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#32555e:#cb4b16:#586e75:#657b83:#ffffff:#6c71c4:#93a1a1:#fdf6e3"
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False

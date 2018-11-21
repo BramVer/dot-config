@@ -99,8 +99,9 @@ alias pacuar="pacaur"
 alias dick="docker"
 alias dickpiss="docker ps"
 alias dickcunt='_dickcunt() { docker exec -it "$1" /bin/bash;}; _dickcunt'
-alias dickpic='_dickpic() { docker ps | grep webapp_run | awk '{print $13}';}; _dickpic'
-alias mppdk="_mppdk() {docker exec -it $(docker ps | grep webapp_run | awk '{print $11}') /bin/bash;}; _mppdk"
+alias dickpic='_dickpic() { docker ps | grep webapp_run | awk "{print $11}";}; _dickpic'
+alias mppdk="docker exec -it $(docker ps | grep webapp_run | awk '{print $1}') /bin/bash"
+alias mppdrc="docker exec -it $(docker ps | grep webapp_run | awk '{print $1}') drush cr"
 
 alias inuitsproxy='/usr/bin//sshuttle --dns -vvr chewbacca.internal.inuits.eu 0.0.0.0/0 -D --pidfile /tmp/inuits.pid'
 alias inuitsproxy-stop='kill $( cat /tmp/inuits.pid )'
@@ -125,6 +126,8 @@ alias mon-right="xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eD
 alias mon-top="xrandr --output eDP1 --auto --output HDMI1 --auto --above eDP1"
 
 alias adcom='_addcomm() { git add "$1" && git commit -m "$2" ;}; _addcomm'
+
+alias ddnotes='/home/darm/DEV/ddnotes/ddnotes'
 
 # COWSAY
 # fortune iasip | cowsay -f tux
@@ -158,3 +161,4 @@ antigen theme robbyrussell
 antigen apply
 
 eval $(thefuck --alias)
+export GPG_TTY=$(tty)
