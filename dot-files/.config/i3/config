@@ -110,10 +110,12 @@ workspace $ws2 output eDP1
 workspace $ws3 output eDP1
 
 for_window [class="Telegram"] move to workspace $ws4
-for_window [class="*Thunderbird"] move to workspace $ws4
+for_window [class="Thunderbird"] move to workspace $ws4
+for_window [class="Rambox"] move to workspace $ws4
 for_window [class="Spotify"] move to workspace $ws3
-for_window [class="firefox-developer-edition"] move to workspace $ws2
+for_window [class="Firefox Developer Edition"] move to workspace $ws2
 for_window [class="subl3"] move to workspace $ws1
+for_window [title="^notes:"] floating enable border none
 
 # reload the configuration file
 bindsym $mod+c reload
@@ -154,7 +156,8 @@ bindsym $mod+r mode "resize"
 
 # Make 'em float on default
 for_window [title="Float*"] floating enable, move relative position center, resize grow left 150, resize grow right 150, resize
-for_window [title="Volume Control"] floating enable, move relative position center, resize shrink left 150, resize shrink right 150, resize
+for_window [title="Volume Control"] floating enable, move relative position center, resize shrink left 200, resize shrink right 200, resize
+
 
 # Launch Nautilus floating
 bindsym $mod+Shift+Return exec dolphin --title Float
@@ -164,10 +167,6 @@ bindsym $mod+Shift+Return exec dolphin --title Float
 
 # Launch compton
 exec_always --no-startup-id compton
-
-# i3 Gnome
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
 
 # Launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -204,6 +203,7 @@ exec --no-startup-id ~/.screenlayout/work.sh
 exec spotify
 exec telegram-desktop
 exec subl3
+exec rambox
 exec nextcloud
 exec lead
 exec thunderbird-beta
@@ -265,6 +265,7 @@ bindcode 233 exec --no-startup-id xbacklight +10
 bindcode 128 exec --no-startup-id arandr
 
 
+exec --no-startup-id bluetoothctl power on
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
 
