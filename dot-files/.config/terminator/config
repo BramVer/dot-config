@@ -5,6 +5,7 @@
 [keybindings]
   broadcast_group = <Primary><Alt>g
   edit_window_title = <Shift><Alt>t
+  group_all = <Primary><Shift><Alt>g
   group_tab_toggle = <Shift><Super>t
   help = Scroll_Lock
 [layouts]
