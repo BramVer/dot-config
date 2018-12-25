@@ -1,9 +1,9 @@
 {
 	"auto_find_in_selection": true,
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"color_scheme": "Packages/Guna/themes/Guna.tmTheme",
 	"draw_centered": true,
 	"font_face": "Fira Code",
-	"font_size": 9,
+	"font_size": 10,
 	"gn_overlay_scroll_bars": true,
 	"gn_sidebar_box": true,
 	"gnwidg1": true,
@@ -11,9 +11,11 @@
 	[
 		"Anaconda",
 		"AppleScript",
+		"Dockerfile Syntax Highlighting",
 		"MagicPython",
 		"Python Checker",
 		"SPARQL",
+		"TOML",
 		"Vintage"
 	],
 	"indent_to_bracket": true,
