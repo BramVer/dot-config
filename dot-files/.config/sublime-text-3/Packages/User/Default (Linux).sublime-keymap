@@ -78,14 +78,40 @@
 	},
 	{
 		"keys": ["ctrl+alt+2"],
-		"command": "set_layout",
+		"command": "chain",
 		"args":
 		{
-			"cols": [0.0, 0.5, 1.0],
-			"rows": [0.0, 1.0],
-			"cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+			"commands": [
+				[
+					"set_layout",
+					{
+						"cols": [0.0, 0.5, 1.0],
+						"rows": [0.0, 1.0],
+						"cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+					}
+				],
+				[
+					"focus_group",
+					{"group": 0}
+				],
+				[
+					"move_to_group",
+					{"group": 1}
+				]
+			]
 		}
-	}, {
+	},
+	// {
+	// 	"keys": ["ctrl+alt+2"],
+	// 	"command": "set_layout",
+	// 	"args":
+	// 	{
+	// 		"cols": [0.0, 0.5, 1.0],
+	// 		"rows": [0.0, 1.0],
+	// 		"cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+	// 	}
+	// },
+	{
 		"keys": ["ctrl+alt+3"],
 		"command": "set_layout",
 		"args": 
