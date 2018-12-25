@@ -19,7 +19,13 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator --title FloatTerm
+bindsym $mod+BackSpace exec terminator --title FloatTerm
+
+# Dropdown terminal
+exec_always --no-startup-id terminator --title DropTermCustom
+for_window [title="DropTermCustom"] floating enable, move scratchpad, scratchpad show, move position 0px -22px, resize shrink height 200px, resize set width 1920px, move scratchpad
+bindsym $mod+Return [title="DropTermCustom"] scratchpad show
+
 
 # kill focused window
 bindsym $mod+q kill
