@@ -24,7 +24,7 @@ bindsym $mod+BackSpace exec terminator --title FloatTerm
 # Dropdown terminal
 exec_always --no-startup-id terminator --title DropTermCustom
 for_window [title="DropTermCustom"] floating enable, move scratchpad, scratchpad show, move position 0px -22px, resize shrink height 200px, resize set width 1920px, move scratchpad
-bindsym $mod+Return [title="DropTermCustom"] scratchpad show
+bindsym $mod+Return scratchpad show
 
 
 # kill focused window
@@ -218,8 +218,6 @@ exec firefox-developer-edition
 # Set background
 exec_always --no-startup-id feh --bg-scale ~/Pictures/background2.jpg
 exec --no-startup-id nm-applet
-
-# Screenshots to clipboard using funnynameprogram
 bindsym $mod+p exec flameshot gui
 
 # i3 gaps
@@ -238,7 +236,7 @@ bindsym $mod+d exec rofi -show drun
 
 # Border colours of windows
 # hide_edge_borders both
-for_window [class="^.*"] border pixel 0 title_format "<big>%title</big>"
+for_window [class="^.*"] border pixel 0 title_format "%title"
 font pango:mono 9
 
 # class                 border          backgr.       text_indicator    child_border
