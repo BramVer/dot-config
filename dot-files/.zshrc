@@ -8,21 +8,6 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnoster"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
@@ -41,96 +26,6 @@ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="dd/mm/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Add wisely, as too many plugins slow down shell startup.
-#plugins=(
-#  git
-#  sudo
-#  web-search
-#  sublime
-#)
-
-#source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="subl3 ~/DEV/dot-config/dot-files/.zshrc"
-alias ohmyzsh="subl3 ~/.oh-my-zsh"
-alias dog="cat"
-alias pacuar="pacaur"
-alias dick="docker"
-alias dickpiss="docker ps"
-alias dickcunt='_dickcunt() { docker exec -it "$1" /bin/bash;}; _dickcunt'
-alias dickpic='_dickpic() { docker ps | grep webapp_run | awk "{print $11}";}; _dickpic'
-alias mppdk="docker exec -it $(docker ps | grep webapp_run | awk '{print $1}') /bin/bash"
-alias mppdrc="docker exec -it $(docker ps | grep webapp_run | awk '{print $1}') drush cr"
-
-alias inuitsproxy='/usr/bin//sshuttle --dns -vvr chewbacca.internal.inuits.eu 0.0.0.0/0 -D --pidfile /tmp/inuits.pid'
-alias inuitsproxy-stop='kill $( cat /tmp/inuits.pid )'
-
-alias solr="/opt/solr/bin/solr"
-
-alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
-alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
-
-alias custom-dots="cd ~/DEV/dot-config/dot-files/ && stt && git status"
-
-alias lpa="cd ~/INUITS/LPA"
-alias mumosad="cd ~/INUITS/LPA && source .virtualenvs/mumosa-default-venv/bin/activate && cd mundomosa-storm-main-topology && git status"
-
-# MPP
-alias mpp="cd ~/INUITS/MPP/ugent-mpp && git status"
-alias converdfer="cd ~/INUITS/MPP/converdfer && python converdfer.py ../project_docs/mp3 500"
-alias converd="cd ~/INUITS/MPP/converdfer && git status"
-alias solr_proxy="ssh -v -NL 8080:localhost:8080 solr01.playground"
-
-alias mon-right="xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1"
-alias mon-top="xrandr --output eDP1 --auto --output HDMI1 --auto --above eDP1"
-
-alias adcom='_addcomm() { git add "$1" && git commit -m "$2" ;}; _addcomm'
-
-alias ddnotes='/home/darm/DEV/ddnotes/ddnotes'
-
-# COWSAY
-# fortune iasip | cowsay -f tux
 
 
 #############
@@ -162,3 +57,85 @@ antigen apply
 
 eval $(thefuck --alias)
 export GPG_TTY=$(tty)
+
+
+# CUSTOM SHITE
+
+function addalias {
+    echo "alias $1=\"$2\"" >> ~/.zshrc && source ~/.zshrc
+}
+
+function git-fetch-all-branches {
+  for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
+}
+
+function _list_changed_files {
+  local -a files
+  for f in `git ls-files -md`;
+    do files[@]+=${f};
+  done
+  compadd -a files
+}
+function _git_diff_to_bat {
+  {git diff $1; git diff --cached $1} | bat
+}
+
+function _list_venvs {
+  local -a venvs
+  for v in `ls ~/.virtualenvs | grep -e ".*_venv"`;
+    do venvs[@]+=${v%*_venv};
+  done
+  compadd -a venvs
+}
+function _activate_venv {
+  # Locked to python version 3.6.7
+  if ! ls ~/.virtualenvs | grep -e "$1_venv" > /dev/null; then
+
+    read "choice?Venv not found, create it? Y/n "
+    case "$choice" in
+      y|Y|"" ) echo "yes";;
+      n|N|* ) return 1;;
+    esac
+
+    ~/.pyenv/shims/python3.6 -m venv ~/.virtualenvs/$1_venv
+
+    if grep -e ".*ets" <<< "$2"; then
+      cp ~/.virtualenvs/ets_config/pip.conf ~/.virtualenvs/$1_venv/
+    fi
+  fi
+
+  source ~/.virtualenvs/$1_venv/bin/activate
+  z $1
+}
+function _rm_venv {
+  if ls ~/.virtualenvs | grep -e "$1_venv" > /dev/null; then
+
+    read "choice?Confirm venv deletion Y/n "
+    case "$choice" in
+      y|Y|"" ) echo "yes";;
+      n|N|* ) return 1;;
+    esac
+    rm ~/.virtualenvs/$1_venv -rf
+
+  else
+    echo "Could not find venv, exiting."
+    return 1
+  fi
+
+  source ~/.zshrc
+}
+compdef _list_venvs _activate_venv;
+compdef _list_venvs _rm_venv;
+alias wo="_activate_venv"
+alias rmvenv="_rm_venv"
+
+compdef _list_changed_files _git_diff_to_bat;
+alias baff="_git_diff_to_bat"
+
+alias ls="exa"
+alias resrc="source ~/.zshrc"
+alias addalias="addalias"
+alias lalias="grep -e 'alias [a-zA-Z_-]*=.*' ~/.zshrc | bat"
+alias ff="firefox-developer-edition"
+
+alias reset_db="~/.config/adimian/db_reload.sh"
