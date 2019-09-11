@@ -1,3 +1,4 @@
+
 [global/wm]
 margin-top = 0
 margin-bottom = 0
@@ -5,7 +6,7 @@ margin-bottom = 0
 
 
 ; ------------------
-; COLORS 
+; COLORS
 ; ------------------
 
 [colors]
@@ -30,12 +31,12 @@ yellow = #f9a825
 
 
 ; ------------------
-; BARS 
+; BARS
 ; ------------------
 
 [bar/main]
 monitor = ${env:MONITOR:eDP1}
-monitor-fallback = eDP1
+monitor-fallback = HDMI1
 width = 100%
 height = 30
 radius = 0.0
@@ -59,52 +60,57 @@ module-margin-right = 2
 font-0 = Overpass Mono:size=11:weight=Regular;1
 font-1 = FontAwesome:size=11;3
 
-modules-left = powermenu 
-; modules-left = powermenu i3 spotify
+modules-left = powermenu
 modules-center = date
-modules-right = i3 
+modules-right = i3
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 
-[bar/secondary]
+[bar/subbotbar]
 inherit = bar/main
-
-monitor = ${env:MONITOR:HDMI1}
-monitor-fallback = HDMI2
-
-
-[bar/fallbackbar]
-inherit = bar/main
-
-monitor = ${env:MONITOR:DP1}
-monitor-fallback = DP2
-
-
-[bar/bottombar]
-inherit = bar/main
+monitor = ${env:MONITOR:}
 radius = 0.0
 fixed-center = true
 bottom = true
 enable-ipc = true
 
 modules-left =
-modules-center = spotifyprevious spotify spotifynext 
-modules-right = volume xkeyboard bluetooth battery battery2 
+modules-center = spotifyprevious spotify spotifynext
+modules-right = volume xkeyboard bluetooth battery
+
+
+
+[bar/subbar]
+inherit = bar/main
+monitor = ${env:MONITOR:}
+
+[bar/bottombar]
+inherit = bar/main
+monitor = ${env:MONITOR:eDP1}
+radius = 0.0
+fixed-center = true
+bottom = true
+enable-ipc = true
+
+modules-left =
+modules-center = spotifyprevious spotify spotifynext
+modules-right = volume xkeyboard bluetooth battery
 
 ; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
 tray-position = left
 tray-padding = 2
 tray-detached = true
-tray-maxsize = 16
-; tray-offset-x = -550
+tray-maxsize = 20
 tray-offset-y = 0
+tray-offset-x = 20
 tray-scale = 1.0
-
+width = 100%
+height = 35
 
 ; ------------------
-; MODULES 
+; MODULES
 ; ------------------
 
 [module/title]
@@ -118,11 +124,11 @@ label-maxlen = 30
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = 
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-overline = ${colors.secondary}
 
-label-layout =   %layout% 
+label-layout =   %layout%
 label-layout-overline = ${colors.secondary}
 
 label-indicator-padding = 2
@@ -213,21 +219,21 @@ type = internal/date
 
 date ="  %A, %d %B %I:%M %p "
 
-format-prefix =  
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <ramp-volume> <label-volume>
 format-volume-background = ${root.background}
 ramp-volume-foreground = ${colors.foreground}
 format-volume-overline = #27d88e
 
-ramp-volume-0 =   
-ramp-volume-1 =  
+ramp-volume-0 = 
+ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
@@ -280,7 +286,7 @@ adapter = AC
 full-at = 98
 time-format = %H:%M
 
-format-charging = <animation-charging> 
+format-charging = <animation-charging>
 format-charging-overline = #ffb52a
 
 format-discharging = <ramp-capacity>
@@ -363,7 +369,7 @@ screenchange-reload = true
 ; click-left = amixer -D pulse sset Master toggle
 ; click-right = exec pavucontrol &
 ; scroll-down = amixer -D pulse sset Master 2%-
-; scroll-up = amixer -D pulse sset Master 2%+  
+; scroll-up = amixer -D pulse sset Master 2%+
 
 [module/filesystem]
 ; type = internal/fs
@@ -491,9 +497,9 @@ click-right = ~/.config/polybar/bluetooth.sh --toggle
 ; interface = wlp4s0
 ; interval = 3.0
 
-; format-connected = <ramp-signal> <label-connected> 
+; format-connected = <ramp-signal> <label-connected>
 ; format-connected-underline = #9f78e1
-; label-connected =                       
+; label-connected = 
 ; ; label-connected =  %essid%
 
 ; format-disconnected = <label-disconnected>
@@ -565,7 +571,7 @@ click-left = "exec playerctl previous"
 
 
 ; padding = 3
-; module-margin = 2 
+; module-margin = 2
 ; separator = %{F#33}|
 
 ; font-0 = System San Francisco Display:size=10;2
@@ -629,7 +635,7 @@ click-left = "exec playerctl previous"
 ; ramp-foreground = ${colors.maia}
 
 ; bar-width = 6
-; bar-indicator = 
+; bar-indicator =
 ; bar-fill = 
 ; bar-fill-font = 3
 ; bar-fill-foreground = ${colors.white}

@@ -1,0 +1,7 @@
+{
+	"virtualenv_directories":
+	[
+		"/home/bram/.virtualenvs",
+		"/home/bram/.cache/pypoetry/virtualenvs"
+	]
+}

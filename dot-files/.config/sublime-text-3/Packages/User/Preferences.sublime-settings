@@ -1,21 +1,36 @@
 {
+	"auto_complete": false,
 	"auto_find_in_selection": true,
 	"color_scheme": "Packages/Guna/themes/Guna.tmTheme",
 	"draw_centered": true,
 	"font_face": "Fira Code",
 	"font_size": 10,
+	"gn_hide_tab_dropdown": true,
 	"gn_overlay_scroll_bars": true,
+	"gn_sb_cnvx": true,
 	"gn_sidebar_box": true,
+	"gnc_m13": true,
 	"gnwidg1": true,
 	"ignored_packages":
 	[
 		"Anaconda",
 		"AppleScript",
+		"AutoDocstring",
+		"DA UI",
 		"Dockerfile Syntax Highlighting",
+		"GoSublime",
+		"Jimbly's Clipboard History",
 		"MagicPython",
+		"Notes",
+		"PlainNotes",
+		"Pug",
 		"Python Checker",
+		"React IDE",
+		"Scroll Other Pane",
 		"SPARQL",
+		"Sync View Scroll",
 		"TOML",
+		"Twig",
 		"Vintage"
 	],
 	"indent_to_bracket": true,
@@ -36,8 +51,12 @@
 	"material_theme_tabs_autowidth": true,
 	"material_theme_tabs_separator": true,
 	"material_theme_tree_headings": true,
+	"rulers":
+	[
+		80
+	],
 	"skin": "DA UI/Origin",
-	"tab_size": 2,
+	"tab_size": 4,
 	"theme": "Guna.sublime-theme",
 	"translate_tabs_to_spaces": true
 }

@@ -1,0 +1,54 @@
+[
+	{
+		"args":
+		{
+			"file": "res://Packages/Default/Add Line Before.sublime-macro"
+		},
+		"command": "run_macro_file"
+	},
+	{
+		"args":
+		{
+			"characters": "__import__("
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": "'pdb')"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": ".set_"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"completion": "set_trace\tfunction ⟠",
+			"snippet": "set_trace",
+			"trigger": "set_trace"
+		},
+		"command": "insert_completion"
+	},
+	{
+		"args":
+		{
+			"contents": "($0)  # DEBUG"
+		},
+		"command": "insert_snippet"
+	},
+	{
+		"args":
+		{
+			"by": "characters",
+			"forward": true
+		},
+		"command": "move"
+	}
+]

@@ -20,11 +20,12 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#002b36"
-    background_darkness = 1.0
+    background_color = "#073642"
+    background_darkness = 0.95
+    background_type = transparent
     cursor_color = "#eee"
     font = Monospace 10
-    foreground_color = "#5d797c"
+    foreground_color = "#709195"
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#32555e:#cb4b16:#586e75:#657b83:#ffffff:#6c71c4:#93a1a1:#fdf6e3"
     scrollback_infinite = True
     scrollbar_position = hidden

@@ -9,12 +9,13 @@
     #   <i>italic</i>
     #   <s>strikethrough</s>
     #   <u>underline</u>
-    # 
+    #
     # For a complete reference see
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
     markup = yes
+    allow_markup = yes
     
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -24,23 +25,26 @@
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     # Markup is allowed
-    format = "%s %p\n%b"
+    format = "<u><span foreground='#F7B2AE'>%s</span></u>\n%b"
     
     # Sort messages by urgency.
     sort = yes
     
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
+
+    # Display indicators for URLs and actions.
+    show_indicators = no
     
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center
     
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
     # This option conflicts with "word_wrap".
     # Set to 0 to disable.
-    bounce_freq = 5
+    bounce_freq = 0
 
     
     # Show age of message if message is older than show_age_threshold
@@ -50,7 +54,7 @@
     
     # Split notifications into multiple lines if they don't fit into
     # geometry.
-    word_wrap = no
+    word_wrap = yes
     
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
@@ -68,7 +72,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "0x4-25+25"
+    geometry = "260x20-5+28"
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -77,13 +81,13 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 15
+    transparency = 0
     
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
     # default 120
-    idle_threshold = 120 
+    idle_threshold = 0
     
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -92,11 +96,11 @@
     #   mouse: follow mouse pointer
     #   keyboard: follow window with keyboard focus
     #   none: don't follow anything
-    # 
+    #
     # "keyboard" needs a windowmanager that exports the
     # _NET_ACTIVE_WINDOW property.
     # This should be the case for almost all modern windowmanagers.
-    # 
+    #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
     follow = mouse
@@ -106,10 +110,7 @@
     sticky_history = yes
     
     # Maximum amount of notifications kept in history
-    history_length = 20
-    
-    # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    history_length = 3
     
     # The height of a single line.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -119,11 +120,11 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 1
+    separator_height = 2
     
     # Padding between text and separator.
     # padding = 8
-    padding = 8
+    padding = 10
     
     # Horizontal padding.
     horizontal_padding = 10
@@ -134,7 +135,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = #263238
+    separator_color = auto
     
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
@@ -145,7 +146,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
     
     # Browser for opening urls in context menu.
-    browser = palemoon
+    browser = firefox
 
     # Align icons left/right/off
     icon_position = left
@@ -154,7 +155,11 @@
     icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
     # Limit icons size.
-    max_icon_size=128
+    max_icon_size=90
+
+[frame]
+    width = 1
+    color = "#F7B2AE"
 
 [shortcuts]
 
@@ -173,7 +178,7 @@
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1".
-    history = ctrl+mod4+h 
+    history = ctrl+mod4+h
     
     # Context menu.
     context = ctrl+mod1+c
@@ -181,23 +186,20 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#263238"
-    foreground = "#556064"
-    timeout = 10
+    background = "#101423"
+    foreground = "#EEFFFF"
+    timeout = 5
 
 [urgency_normal]
-    background = "#263238"
-    foreground = "#F9FAF9"
-    timeout = 10
+    background = "#101423"
+    foreground = "#EEFFFF"
+    timeout = 5
 
 [urgency_critical]
-    background = "#D62929"
-    foreground = "#F9FAF9"
-    timeout = 0
+    background = "#101423"
+    foreground = "#EEFFFF"
+    timeout = 5
 
-[play_sound]
-    summary = "*"
-    script = ~/dot-config/dot-files/.config/dunst/alert.sh
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -212,7 +214,7 @@
 # The script will be called as follows:
 #   script appname summary body icon urgency
 # where urgency can be "LOW", "NORMAL" or "CRITICAL".
-# 
+#
 # NOTE: if you don't want a notification to be displayed, set the format
 # to "".
 # NOTE: It might be helpful to run dunst -print in a terminal in order

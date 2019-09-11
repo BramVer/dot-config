@@ -1,0 +1,293 @@
+[
+	{
+		"args":
+		{
+			"file": "res://Packages/Default/Add Line Before.sublime-macro"
+		},
+		"command": "run_macro_file"
+	},
+	{
+		"args":
+		{
+			"characters": "import"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": " pandas"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": "\n"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": "pand"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"forward": false
+		},
+		"command": "delete_word"
+	},
+	{
+		"args":
+		{
+			"characters": "return"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": " pan"
+		},
+		"command": "insert"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args":
+		{
+			"contents": "($0)"
+		},
+		"command": "insert_snippet"
+	},
+	{
+		"args":
+		{
+			"characters": "pad"
+		},
+		"command": "insert"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args":
+		{
+			"characters": "ndas.to"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"completion": "to_datetime\tfunction ⟠",
+			"snippet": "to_datetime",
+			"trigger": "to_datetime"
+		},
+		"command": "insert_completion"
+	},
+	{
+		"args":
+		{
+			"contents": "($0)"
+		},
+		"command": "insert_snippet"
+	},
+	{
+		"args":
+		{
+			"contents": "\"$0\""
+		},
+		"command": "insert_snippet"
+	},
+	{
+		"args":
+		{
+			"characters": "2019"
+		},
+		"command": "insert"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args":
+		{
+			"characters": "85"
+		},
+		"command": "insert"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args":
+		{
+			"characters": "-10-01"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"by": "characters",
+			"forward": true
+		},
+		"command": "move"
+	},
+	{
+		"args":
+		{
+			"by": "characters",
+			"forward": true
+		},
+		"command": "move"
+	},
+	{
+		"args":
+		{
+			"characters": ","
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": " "
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": "pand"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"completion": "pandas\tmodule ⟠",
+			"snippet": "pandas",
+			"trigger": "pandas"
+		},
+		"command": "insert_completion"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args":
+		{
+			"characters": ".t"
+		},
+		"command": "insert"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args":
+		{
+			"characters": "s.to_"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"completion": "to_datetime\tfunction ⟠",
+			"snippet": "to_datetime",
+			"trigger": "to_datetime"
+		},
+		"command": "insert_completion"
+	},
+	{
+		"args":
+		{
+			"contents": "($0)"
+		},
+		"command": "insert_snippet"
+	},
+	{
+		"args":
+		{
+			"contents": "\"$0\""
+		},
+		"command": "insert_snippet"
+	},
+	{
+		"args":
+		{
+			"characters": "20"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"completion": "2018-10-01",
+			"snippet": "2018-10-01",
+			"trigger": "2018-10-01"
+		},
+		"command": "insert_completion"
+	},
+	{
+		"args":
+		{
+			"by": "characters",
+			"forward": false
+		},
+		"command": "move"
+	},
+	{
+		"args":
+		{
+			"by": "characters",
+			"forward": false
+		},
+		"command": "move"
+	},
+	{
+		"args":
+		{
+			"by": "characters",
+			"forward": false
+		},
+		"command": "move"
+	},
+	{
+		"args": null,
+		"command": "left_delete"
+	},
+	{
+		"args":
+		{
+			"characters": "1"
+		},
+		"command": "insert"
+	}
+]

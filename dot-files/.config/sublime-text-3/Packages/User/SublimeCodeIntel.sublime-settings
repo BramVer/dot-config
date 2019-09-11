@@ -1,0 +1,16 @@
+{
+    "codeintel_language_settings": {
+        "Python3": {
+            "python3": "/usr/local/bin/python3",
+            "codeintel_scan_extra_dir": [
+                "/Applications/Sublime Text.app/Contents/MacOS",
+                "~/Library/Application Support/Sublime Text 3/Packages/SublimeCodeIntel/arch",
+                "~/Library/Application Support/Sublime Text 3/Packages/SublimeCodeIntel/libs",
+                "~/.virtualenvs/",
+                "~/.virtualenvs/grepa_venv/lib/python3.6/site-packages",
+            ],
+            "codeintel_scan_files_in_project": true,
+            "codeintel_selected_catalogs": []
+        },
+    },
+}
