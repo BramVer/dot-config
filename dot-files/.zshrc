@@ -1,68 +1,84 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/darm/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+export ZSH="/home/bram/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
+HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
+#
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+HIST_STAMPS="dd/mm/yyyy"
 
 
-#############
-## ANTIGEN ##
-#############
-source /usr/share/zsh/share/antigen.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ plugins=(
+    git
+    python
+    pep8
+    pylint
+    git-extras
+    tig
+    sudo
+    history
+    dirhistory
+    django
+    docker
+    z
+ )
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle sudo
-antigen bundle web-search
-antigen bundle pip
-antigen bundle command-not-found
-antigen bundle sublime
-antigen bundle zsh-autosuggestions
+# User configuration
+export MANPATH="/usr/local/man:$MANPATH"
+fpath+=~/.zfunc
+# export PYTHONSTARTUP="/home/bram/.config/python_repl_startup.py"
+# export PYTHONWARNINGS="ignore::yaml.YAMLLoadWarning"
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+export CHEAT_COLORS=true
+export NPM_CONFIG_PREFIX="~/.config/npm-global"
 
-# Load the theme.
-antigen theme robbyrussell
+# Adimian
+export WORKON_HOME=~/.virtualenvs
+export BETTER_EXCEPTIONS=1
+export PYENV_ROOT="$HOME/.pyenv"
+export VIRTUALENVWRAPPER_PYTHON="$HOME/.pyenv/versions/3.6.7/bin/python"
+export PATH="$PYENV_ROOT/bin:$PATH:$HOME/adimian/greenpandas"
+export B2E2_CONFIG="$HOME/.config/adimian/b2e2_settings.py"
+export GREENPANDAS_CONFIG="$HOME/.config/adimian/greenpandas_settings.py"
+export SAFIRES_CONFIG="$HOME/.config/adimian/safires_conf.yaml"
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.config/adimian/vault
+export PIP_REQUIRE_VIRTUALENV=true
 
-# Tell Antigen that you're done.
-antigen apply
-
-eval $(thefuck --alias)
 export GPG_TTY=$(tty)
 
-
-# CUSTOM SHITE
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval
+  fuck () {
+      TF_PYTHONIOENCODING=$PYTHONIOENCODING;
+      export TF_SHELL=zsh;
+      export TF_ALIAS=fuck;
+      TF_SHELL_ALIASES=$(alias);
+      export TF_SHELL_ALIASES;
+      TF_HISTORY="$(fc -ln -10)";
+      export TF_HISTORY;
+      export PYTHONIOENCODING=utf-8;
+      TF_CMD=$(
+          thefuck THEFUCK_ARGUMENT_PLACEHOLDER $@
+      ) && eval $TF_CMD;
+      unset TF_HISTORY;
+      export PYTHONIOENCODING=$TF_PYTHONIOENCODING;
+      test -n "$TF_CMD" && print -s $TF_CMD
+  }
 
 function addalias {
-    echo "alias $1=\"$2\"" >> ~/.zshrc && source ~/.zshrc
+  echo "alias $1=\"$2\"" >> ~/.zshrc && source ~/.zshrc
 }
 
 function git-fetch-all-branches {
@@ -102,6 +118,8 @@ function _activate_venv {
     if grep -e ".*ets" <<< "$2"; then
       cp ~/.virtualenvs/ets_config/pip.conf ~/.virtualenvs/$1_venv/
     fi
+
+      ~/.virtualenvs/$1_venv/bin/pip install --user bpython pdbpp better_exceptions
   fi
 
   source ~/.virtualenvs/$1_venv/bin/activate
@@ -124,6 +142,36 @@ function _rm_venv {
 
   source ~/.zshrc
 }
+function _beat {
+  cheat $1 | bat -l md
+}
+
+function _grep_ansv {
+  echo "Starting search..."[
+    for i in `ls "$(pwd)/$1" | grep -e ".*\.yml"`; do
+    file="$(pwd)/$1/$i";
+    match=$(ansvv "$file" | grep "$2")
+
+    [[ $match ]] && {
+      echo "---"
+      echo "File: $file";
+      echo $match;
+      echo "---"
+    }
+  done
+
+  echo "Done"
+}
+
+function _gpip {
+  PIP_REQUIRE_VIRTUALENV=""
+  pip -u "$@"
+}
+
+function _mytest {
+  python -m pytest $1 -l -vW $2
+}
+
 compdef _list_venvs _activate_venv;
 compdef _list_venvs _rm_venv;
 alias wo="_activate_venv"
@@ -132,6 +180,8 @@ alias rmvenv="_rm_venv"
 compdef _list_changed_files _git_diff_to_bat;
 alias baff="_git_diff_to_bat"
 
+alias beat="_beat"
+
 alias ls="exa"
 alias resrc="source ~/.zshrc"
 alias addalias="addalias"
@@ -139,3 +189,14 @@ alias lalias="grep -e 'alias [a-zA-Z_-]*=.*' ~/.zshrc | bat"
 alias ff="firefox-developer-edition"
 
 alias reset_db="~/.config/adimian/db_reload.sh"
+
+alias ansve="ansible-vault edit"
+alias ansvv="ansible-vault view"
+
+
+alias gransv="_grep_ansv"
+alias gatsby="~/.config/npm-global/bin/gatsby"
+
+alias gpip="_gpip"
+
+alias mytest="_mytest"
